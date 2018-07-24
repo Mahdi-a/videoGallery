@@ -1,0 +1,27 @@
+{
+  "name": "videogallery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/mahdi.a/videoGallery.git"
+  },
+  "author": "Mahdi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/mahdi.a/videoGallery/issues"
+  },
+  "homepage": "https://gitlab.com/mahdi.a/videoGallery#README",
+  "dependencies": {
+    "babel-preset-react": "^6.24.1",
+    "babelify": "^8.0.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "^1.1.4"
+  }
+}
