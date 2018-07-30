@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-// import ReactDOM from 'react-dom';
-// import VideosData from './VideosData';
-// import VideosData from './VideosData.js';
-// import videosList from "../database/videos.js";
+// import PropTypes from 'prop-types';
 import VideosData from './VideosData';
 import Filters from './Filters';
 import Videos from './Videos';
@@ -14,41 +10,36 @@ class VideoGallery extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            videosData: []
+            videosData: [],
+            tags: [],
+            tagsState: {}
         };
-        // this.checkboxChange = this.checkboxChange.bind(this);
-        // this.componentWillMount = this.componentWillMount.bind(this);
         
+        this.checkboxChange = this.checkboxChange.bind(this);        
     }
 
-    // checkboxChange(e) {
-    //     console.log("e.target.checked");
-    // }
+    checkboxChange(e) {
+
+        const tagsState = this.state.tagsState;
+        
+        tagsState[e.target.value] = e.target.checked;
+
+        this.setState({ tagsState });
+    }
 
     componentWillMount() {
-        // const data = {
-        //     videos: window.videos, function (video) {
-        //         return JSON.stringify(video);
-        //     }
-        // };
-        
-        // const videosData = data.videos;
+
         const videosData = VideosData;
         this.setState({ videosData });
         this.getVideoTags();
-        
-        
     }
 
-
-
     getVideoTags() {
-        console.log("getTags");
-        // console.log(this.state);
+        
         const { videosData } = VideosData;
         let tagLowerCase = [];
         let tags = [];
-        // const ttt = data.find(w => w.id == 162702);
+        
         videosData.map(function (video) {
             if (video.tags.length == 0 && tagLowerCase.indexOf("other") === -1) {
                 tagLowerCase.push("other");
@@ -66,13 +57,10 @@ class VideoGallery extends React.Component {
         }); 
 
         this.setState({ tags: tags });
-        // console.log(tags);
-        
     }
 
     getTagsState(e) {
-        console.log("Get tagsState");
-        
+
         const allTags = this.state.tags;
         const tagsState = {};
         allTags.map(tag =>
@@ -87,14 +75,8 @@ class VideoGallery extends React.Component {
         
         this.getVideoTags();
         this.getTagsState();
-        
-        // const test = videosData.find(w => w.id == 162702);
-        // console.log(test);
-        
-    }
 
-    // componentDidMount() {       
-    // }
+    }
 
     render() { 
         
@@ -102,16 +84,16 @@ class VideoGallery extends React.Component {
         <div className="app">
                 <h1>Hello</h1>
                 <Filters/>
-                <Tags tagsArray={this.state.tags} />
-                <Videos VideosData = {this.state.videosData}/>
+                <Tags
+                    tagsArray={this.state.tags}
+                    
+                    onChange={this.checkboxChange} 
+                />
+                
+                <Videos VideosData = {this.state.videosData} />
         </div>);
         
     }
 }
-
-VideoGallery.propTypes = {
-	
-	onChange: PropTypes.func
-};
 
 export default VideoGallery;
