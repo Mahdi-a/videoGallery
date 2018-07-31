@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 import VideosData from './VideosData';
 import Filters from './Filters';
 import Videos from './Videos';
@@ -79,10 +78,10 @@ class VideoGallery extends React.Component {
     }
 
     render() { 
-        
+        // const test = this.state.tagsState;
+        // console.log(this.state);
         return(
         <div className="app">
-                <h1>Hello</h1>
                 <Filters/>
                 <Tags
                     tagsArray={this.state.tags}
@@ -90,7 +89,7 @@ class VideoGallery extends React.Component {
                     onChange={this.checkboxChange} 
                 />
                 
-                <Videos VideosData = {this.state.videosData} />
+                <Videos VideosData={this.state.videosData} tagsState={this.state.tagsState}/>
         </div>);
         
     }
