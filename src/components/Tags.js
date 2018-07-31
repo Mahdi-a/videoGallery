@@ -22,12 +22,20 @@ class Tags extends React.Component {
         return (
             <form className="frmTags">
                 <h3>Tags:</h3>
-                {allTags.map(tag =>
-                    <span className="tagsCheckboxs">
-                        <input type="checkbox" name={tag} value={tag} defaultChecked onChange={this.checkboxChange}/>
+                {allTags.map((tag, index) =>
+                    <span className="tagsCheckboxs" key={index}>
+                        <input
+                            className="checkbox"
+                            type="checkbox"
+                            key={tag}
+                            name={tag}
+                            value={tag}
+                            defaultChecked
+                            onChange={this.checkboxChange}     
+                        />
                         <label htmlFor={tag}>{tag}</label>
                     </span>
-                )}; 
+                )} 
                 
             </form>
         );

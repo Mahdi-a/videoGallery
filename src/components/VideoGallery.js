@@ -54,7 +54,6 @@ class VideoGallery extends React.Component {
             }
             
         }); 
-
         this.setState({ tags: tags });
     }
 
@@ -66,32 +65,29 @@ class VideoGallery extends React.Component {
             tagsState[tag] = true
         );
         this.setState({ tagsState });
-
-        
     }
 
     componentDidMount() {
         
         this.getVideoTags();
         this.getTagsState();
-
     }
 
     render() { 
-        // const test = this.state.tagsState;
-        // console.log(this.state);
+
         return(
-        <div className="app">
+            <div className="app">
                 <Filters/>
                 <Tags
                     tagsArray={this.state.tags}
-                    
                     onChange={this.checkboxChange} 
                 />
-                
-                <Videos VideosData={this.state.videosData} tagsState={this.state.tagsState}/>
-        </div>);
-        
+                <Videos
+                    VideosData={this.state.videosData}
+                    tagsState={this.state.tagsState} 
+                />
+            </div>
+        );  
     }
 }
 

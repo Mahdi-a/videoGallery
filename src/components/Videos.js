@@ -28,29 +28,30 @@ class Videos extends React.Component {
         
         for (let i = 0; i < videoTags.length; i++) {
             if (selectedTags.indexOf(videoTags[i]) != -1) {
-                return <li
-                    key={video.id}
-                    name={video.name}
-                    category={video.category.split("->")}
-                    tags={video.tags}
-                    className='video'
-                >
-                <img
-                    className='videoThumbnail'
-                    src={video.thumbnail}
-                    alt='video thumbnail'
-                />
+                return (
+                    <li className='video' key={video.id}>
+                        <img
+                            className='videoThumbnail'
+                            src={video.thumbnail}
+                            alt='video thumbnail'
+                        />
                     
-                <h2>{video.name}</h2>
-                <p>{video.dateCreated}</p>
-                    <p>{video.description}</p>
-                    <h3>Categories:</h3>
-                    <p>{video.category}</p>
-                    <h3>Tags:</h3>
-                <ul>
-                    {video.tags.map(((tag, index) => <li key={index}>{tag}</li>))}
-                </ul>
-            </li>;
+                        <h2>{video.name}</h2>
+                        <p>{video.dateCreated}</p>
+                        <p>{video.description}</p>
+                        <div className='categoryAndTags'>                            
+                            <span>
+                                <strong>Categories:</strong> {video.category}
+                            </span>                            
+                            <div>
+                                <strong>Tags:</strong>
+                                <ul className='videoTags'>
+                                    {video.tags.map(((tag, index) => <li key={tag}>{tag}</li>))}
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                );
             }
         }
     }

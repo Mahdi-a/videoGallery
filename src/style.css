@@ -2,60 +2,84 @@
     text-align: center;
 }
 
-.App-logo {
-    animation: App-logo-spin infinite 20s linear;
-    height: 80px;
-}
-
-.App-header {
-    background-color: #222;
-    height: 150px;
-    padding: 20px;
-    color: white;
-}
-
-.App-title {
-    font-size: 1.5em;
-}
-
-.App-intro {
-    font-size: large;
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+body {
+    background-color: rgb(215, 215, 215);
 }
 
 .videosList {
     padding: 0;
-    margin: 0;
+    margin: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     list-style: none;
-    display: -webkit-box;
+    display: inline-block; 
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-flex-flow: row wrap;
     -ms-flex-flow: row wrap;
-    flex-flow: row wrap
+    flex-flow: row wrap;
+    border: 2px solid black;
+    border-radius: 5px; 
+    background: white;
 }
 
-.videosList .video {
+.video {
     position: relative;
-    /*color: #fff;*/
-    overflow: hidden;
-    width: 50%;
-    -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
-    opacity: .8/*.product-name*/
+    border: 2px solid white;
+    border-radius: 5px;
+    width: 47%;
+    padding: 1%;
+    margin: 0px;
+    margin-inline-start: 2.5px;
+    background: rgb(252, 171, 73);
+    display: inline-block;
 }
 
 .videoThumbnail {
     margin: 5px;
-    height: 25%;
     width: 50%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.videoTags {
+    list-style: disc;
+}
+
+.categoryAndTags {
+    line-height: 1.5em;
+}
+
+.filters {
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 5px;
+    line-height: 3em;
+    background: rgb(252, 171, 73);
+    margin: 5px;
+}
+
+.filters label, select {
+    margin: 2px;
+    font-size: 1em;
+}
+
+.frmTags {
+    border: 2px solid black;
+    border-radius: 5px;
+    line-height: 1.5em;
+    background: rgb(252, 171, 73);
+    padding: 5px;
+    margin: 5px;
+}
+
+.tagsCheckboxs {
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    display: inline-block;
+}
+
+h1, h2, h3 {
+    margin: 0;
 }
