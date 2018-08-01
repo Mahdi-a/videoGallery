@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import VideosData from './VideosData';
 import Filters from './Filters';
 import Videos from './Videos';
@@ -13,16 +13,13 @@ class VideoGallery extends React.Component {
             tags: [],
             tagsState: {}
         };
-        
         this.checkboxChange = this.checkboxChange.bind(this);        
     }
 
     checkboxChange(e) {
 
         const tagsState = this.state.tagsState;
-        
         tagsState[e.target.value] = e.target.checked;
-
         this.setState({ tagsState });
     }
 
@@ -38,27 +35,24 @@ class VideoGallery extends React.Component {
         const { videosData } = VideosData;
         let tagLowerCase = [];
         let tags = [];
-        
+
         videosData.map(function (video) {
-            if (video.tags.length == 0 && tagLowerCase.indexOf("other") === -1) {
+            if (video.tags.length === 0 && tagLowerCase.indexOf("other") === -1) {
                 tagLowerCase.push("other");
                 tags.push("Other");
             } else {
                 for (let i = 0; i < video.tags.length; i++){
                     if (tagLowerCase.indexOf(video.tags[i].toLowerCase()) === -1) {
                         tagLowerCase.push(video.tags[i].toLowerCase());
-                        
                         tags.push(video.tags[i]);
                     }
                 }
             }
-            
         }); 
         this.setState({ tags: tags });
     }
 
     getTagsState(e) {
-
         const allTags = this.state.tags;
         const tagsState = {};
         allTags.map(tag =>
@@ -67,14 +61,12 @@ class VideoGallery extends React.Component {
         this.setState({ tagsState });
     }
 
-    componentDidMount() {
-        
+    componentDidMount() {    
         this.getVideoTags();
         this.getTagsState();
     }
 
     render() { 
-
         return(
             <div className="app">
                 <Filters/>

@@ -1,12 +1,9 @@
 import React from 'react';
 
 class Filters extends React.Component {
-
-
+    
     submitFilter(e) {
-
         console.log(e);
-        
     }
     render() {
         return (

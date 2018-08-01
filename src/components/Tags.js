@@ -1,22 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 
 class Tags extends React.Component {
     constructor(props) {
         super(props);
-
         this.checkboxChange = this.checkboxChange.bind(this);
     }
 
     checkboxChange(e) {
-        
         const { onChange } = this.props;
-        
         onChange(e);        
     }
+
     render() {
-        
-        console.log("Tags.js")
-       
         const allTags = this.props.tagsArray;
 
         return (
@@ -36,7 +31,6 @@ class Tags extends React.Component {
                         <label htmlFor={tag}>{tag}</label>
                     </span>
                 )} 
-                
             </form>
         );
     }

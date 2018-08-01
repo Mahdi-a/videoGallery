@@ -1,33 +1,29 @@
-import React, { Component } from "react";
+import React from "react";
 
 class Videos extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     getSelectedTags() {
         const tagsState = this.props.tagsState;
-
         const selectedTags = [];
 
         Object.keys(tagsState).forEach(tag => {
-            if (tagsState[tag] == true) {
+            if (tagsState[tag] === true) {
                 selectedTags.push(tag);
             }
         });
 
         return selectedTags;
     }
-    renderVideo(video, selectedTags) {
-        
+
+    renderVideo(video, selectedTags) {    
         const videoTags = video.tags;
         
-        if (videoTags.length == 0) {
+        if (videoTags.length === 0) {
             videoTags.push('Other');
         }
         
         for (let i = 0; i < videoTags.length; i++) {
-            if (selectedTags.indexOf(videoTags[i]) != -1) {
+            if (selectedTags.indexOf(videoTags[i]) !== -1) {
                 return (
                     <li className='video' key={video.id}>
                         <img
@@ -57,7 +53,6 @@ class Videos extends React.Component {
     }
     
     render() {
-        console.log("Videos.js")
         const allVideos = this.props.VideosData.videosData;
         const selectedTags = this.getSelectedTags();
         
