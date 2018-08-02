@@ -42,7 +42,8 @@ class Videos extends React.Component {
                             <div>
                                 <strong>Tags:</strong>
                                 <ul className='videoTags'>
-                                    {video.tags.map(((tag, index) => <li key={tag}>{tag}</li>))}
+                                    {video.tags.map(((tag, index) => 
+                                        <li key={tag}>{tag}</li>))}
                                 </ul>
                             </div>
                         </div>

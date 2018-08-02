@@ -1,8 +1,10 @@
 import React from 'react';
 import VideosData from './VideosData';
 import Filters from './Filters';
-import Videos from './Videos';
+import Categories from './Categories';
 import Tags from './Tags';
+import Videos from './Videos';
+
 
 class VideoGallery extends React.Component {
 
@@ -10,10 +12,18 @@ class VideoGallery extends React.Component {
         super(props);
         this.state = {
             videosData: [],
+            categories: [],
+            allVideoCat: [],
             tags: [],
             tagsState: {}
         };
-        this.checkboxChange = this.checkboxChange.bind(this);        
+        this.checkboxChange = this.checkboxChange.bind(this); 
+        this.categoriesChange = this.categoriesChange.bind(this);
+    }
+
+    categoriesChange(e) {
+        const catLevel = e.target.name;
+        
     }
 
     checkboxChange(e) {
@@ -61,15 +71,57 @@ class VideoGallery extends React.Component {
         this.setState({ tagsState });
     }
 
+    getCategories(){
+        const { videosData } = this.state.videosData;
+        // const categories = {};
+        let categories = this.makeCategoriesArray(videosData);
+        let allVideoCat = [];
+        for (let i = 0; i < videosData.length; i++){
+            const catArray = videosData[i].category.split('->');
+            // console.log(catArray);
+            allVideoCat.push(catArray);
+            
+            for (let j = 0; j < catArray.length; j++){
+                if (categories[j].indexOf(catArray[j]) === -1){
+                    categories[j].push(catArray[j]);    
+                }
+            }
+        }
+        this.setState({ categories: categories });
+        this.setState({ allVideoCat: allVideoCat });
+
+        // console.log(allVideoCat);
+        // console.log(categories);
+            
+            
+    }
+    makeCategoriesArray(videosData){
+        let categoriesArray = [];
+        for (let i = 0; i < videosData.length; i++){
+            const catArray = videosData[i].category.split('->');
+            for (let j = 0; j < catArray.length; j++){
+                categoriesArray[j] = ['All'];
+            }
+        }
+        return categoriesArray;
+    }
+
     componentDidMount() {    
         this.getVideoTags();
         this.getTagsState();
+        this.getCategories();
+
     }
 
     render() { 
         return(
             <div className="app">
                 <Filters/>
+                <Categories
+                    categories={this.state.categories}
+                    allVideoCat={this.state.allVideoCat}
+                    onChange={this.categoriesChange}
+                />
                 <Tags
                     tagsArray={this.state.tags}
                     onChange={this.checkboxChange} 
