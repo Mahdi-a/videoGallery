@@ -5,7 +5,7 @@ class Categories extends React.Component {
 		super(props);
 		this.state = {
 			allOptions: [],
-			selectedValue: []
+			selectedCats: []
 		};
 		
 		this.categoriesChange = this.categoriesChange.bind(this);
@@ -32,23 +32,27 @@ class Categories extends React.Component {
 		
 		let allOptions = this.state.allOptions;
 		let options = ['All'];
-		let selectedValue = this.state.selectedValue;
+		let selectedCats = this.state.selectedCats;
 		
 		if (catLevel < allOptions.length) {
 			
 			allOptions.splice(catLevel);
-			selectedValue.splice(catLevel);
+			selectedCats.splice(catLevel);
 			
-			selectedValue[catLevel] = selectedCat;
-			selectedValue.push('All');
+			selectedCats[catLevel] = selectedCat;
 			
-			this.setState({ selectedValue: selectedValue });
+			if (selectedCat !== 'All'){
+				selectedCats.push('All');	
+			}
+			
+			
+			this.setState({ selectedCats: selectedCats });
 			this.setState({ allOptions: allOptions });
 
 		} else {
-			let selectedValue = this.state.selectedValue;
-			selectedValue[catLevel] = selectedCat;
-			this.setState({ selectedValue: selectedValue });
+			let selectedCats = this.state.selectedCats;
+			selectedCats[catLevel] = selectedCat;
+			this.setState({ selectedCats: selectedCats });
 		}
 		if (catLevel + 1 < maxLevel) {
 			
@@ -92,7 +96,7 @@ class Categories extends React.Component {
 					<select
 						onChange={this.categoriesChange}
 						name={index + 1}
-						value={this.state.selectedValue[index + 1]}>
+						value={this.state.selectedCats[index + 1]}>
 						
 						{option.map(o => <option value={o}>{o}</option>)}
 

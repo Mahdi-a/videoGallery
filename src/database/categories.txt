@@ -1,0 +1,25 @@
+Junior->Science->Biology
+Junior->Health->Personal Development
+Senior->Science
+Senior->Civics & Citizenship
+Senior->English->Journalism
+Senior->History
+Junior->English->Drama
+Senior->Geography
+Junior->Geography->Aboriginal Studies
+Senior->Civics & Citizenship
+Junior->Geography
+Senior->Languages
+Senior->Science
+Junior->English
+Senior->Science->Phychology
+Senior->Science->Phychology
+Senior->History
+Junior->Science
+Junior->English
+Junior->History
+Junior->English->Culture->USA
+Senior->History->Ancient->China
+Junior->History
+Junior->English->Culture
+Senior->English

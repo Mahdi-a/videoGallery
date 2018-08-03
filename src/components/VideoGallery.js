@@ -15,14 +15,29 @@ class VideoGallery extends React.Component {
             categories: [],
             allVideoCat: [],
             tags: [],
-            tagsState: {}
+            tagsState: {}, 
+            selectedCats: []
         };
         this.checkboxChange = this.checkboxChange.bind(this); 
         this.categoriesChange = this.categoriesChange.bind(this);
     }
 
     categoriesChange(e) {
-        const catLevel = e.target.name;
+        const catLevel = e.target.name * 1;
+        const selectedCat = e.target.value;
+        const selectedCats = this.state.selectedCats;
+        const maxLevel = this.state.categories.length;
+        
+        if (catLevel < maxLevel) {
+            selectedCats.splice(catLevel);
+            selectedCats[catLevel] = selectedCat;
+            if (selectedCat !== 'All') {
+                selectedCats.push('All');
+            }
+        }
+        this.setState({selectedCats: selectedCats});
+        // console.log(maxLevel);
+        // console.log('Cat level: ' + catLevel + 'Selected Cat: '+selectedCat);
         
     }
 
@@ -125,10 +140,12 @@ class VideoGallery extends React.Component {
                 <Tags
                     tagsArray={this.state.tags}
                     onChange={this.checkboxChange} 
+                    tagsState={this.state.tagsState}
                 />
                 <Videos
                     VideosData={this.state.videosData}
                     tagsState={this.state.tagsState} 
+                    selectedCats={this.state.selectedCats}
                 />
             </div>
         );  

@@ -5,12 +5,12 @@ class Tags extends React.Component {
         super(props);
         this.checkboxChange = this.checkboxChange.bind(this);
     }
-
+    
     checkboxChange(e) {
         const { onChange } = this.props;
         onChange(e);        
     }
-
+    
     render() {
         const allTags = this.props.tagsArray;
 
@@ -25,8 +25,8 @@ class Tags extends React.Component {
                             key={tag}
                             name={tag}
                             value={tag}
-                            defaultChecked
-                            onChange={this.checkboxChange}     
+                            onChange={this.checkboxChange} 
+                            checked={this.props.tagsState[tag]}   
                         />
                         <label htmlFor={tag}>{tag}</label>
                     </span>
