@@ -11,34 +11,27 @@ class Videos extends React.Component {
                 selectedTags.push(tag);
             }
         });
-
         return selectedTags;
     }
 
     checkCategories(selectedCats, videoCats) {
-        console.log(selectedCats);
-        console.log(videoCats); 
+        
         let counter = 0;
+
         if (selectedCats.length === 0 || selectedCats[0] === 'All') {
-            // console.log('true');
             return true;
         } else {
-            
             for (let i = 0; i < selectedCats.length; i++){
                 if (selectedCats[i] === videoCats[i] || selectedCats[i] === 'All') {
                     counter++;
                 }
             }
             if (counter === selectedCats.length){
-                // console.log('TRUE');
                 return true;
             } else {
-                // console.log('FALSE');
                 return false;
             }
-            // console.log(counter);
         }
-        // this.setState({catIndex: catIndex});
     }
 
     renderVideo(video, selectedCats, selectedTags) {   
@@ -47,14 +40,12 @@ class Videos extends React.Component {
         const videoCats = video.category.split('->');
         
         this.checkCategories(selectedCats, videoCats);
-        // const test = this.checkCategories(selectedCats, videoCats);
-        // console.log(test);
+
         if (this.checkCategories(selectedCats, videoCats)){
             
             if (videoTags.length === 0) {
                 videoTags.push('Other');
-            }
-            
+            }            
             for (let i = 0; i < videoTags.length; i++) {
                 if (selectedTags.indexOf(videoTags[i]) !== -1) {
                     return (
@@ -84,7 +75,7 @@ class Videos extends React.Component {
                     );
                 }
             }
-        }
+        } 
     }
     
     render() {

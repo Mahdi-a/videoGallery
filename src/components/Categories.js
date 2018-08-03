@@ -33,7 +33,7 @@ class Categories extends React.Component {
 		let allOptions = this.state.allOptions;
 		let options = ['All'];
 		let selectedCats = this.state.selectedCats;
-		
+		// debugger;
 		if (catLevel < allOptions.length) {
 			
 			allOptions.splice(catLevel);
@@ -61,11 +61,14 @@ class Categories extends React.Component {
 				for (let i = 0; i < allCats.length; i++){
 					
 					const videoCats = allCats[i];
+
+					let catsParent = this.checkCats(videoCats, selectedCats);
 					
-					for (let j = 0; j < videoCats.length; j++){
-					
-						if (videoCats[catLevel] === selectedCat && videoCats.length > (catLevel+1) && options.indexOf(videoCats[catLevel+1]) === -1) {
+					for (let j = 0; j < videoCats.length; j++ ){
+						
+						if (catsParent && videoCats[catLevel] === selectedCat && videoCats.length > catLevel+1 && options.indexOf(videoCats[catLevel+1]) === -1) {
 							options.push(videoCats[catLevel+1]);
+							// console.log(videoCats[catLevel+1]);
 						}
 					}
 				}
@@ -73,6 +76,19 @@ class Categories extends React.Component {
 			}
 		}
 		this.setState({ allOptions: allOptions });
+	}
+	checkCats(videoCats, selectedCats){
+		let counter = 0;
+		for(let i = 0, length1 = videoCats.length; i < length1; i++){
+			if (videoCats[i] === selectedCats[i] || selectedCats[i] === 'All'){
+				counter++;
+			}
+		}
+		if (counter === selectedCats.length){
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	render(){

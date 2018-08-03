@@ -125,6 +125,7 @@ class VideoGallery extends React.Component {
         this.getVideoTags();
         this.getTagsState();
         this.getCategories();
+        console.log(React.Children.count());
 
     }
 

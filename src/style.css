@@ -46,10 +46,10 @@ body {
 .videoTags {
     list-style: disc;
 }
-
+/*
 .categoryAndTags {
     line-height: 1.5em;
-}
+}*/
 
 .filters {
     text-align: center;
@@ -65,7 +65,7 @@ body {
     font-size: 1em;
 }
 
-.frmTags {
+.frmTags, .frmCategories{
     border: 2px solid black;
     border-radius: 5px;
     line-height: 1.5em;
